@@ -265,3 +265,7 @@ h2.sp{margin-top:1.2rem}
 #inicio::before{background-image:url(img/fundo-inicio.webp);background-size:cover;background-position:42% center;background-repeat:no-repeat}
 #inicio::after{background:linear-gradient(rgba(251,248,241,.92) 0,rgba(251,248,241,.88) 110px,rgba(251,248,241,.74) 260px,rgba(251,248,241,.74))}
 #inicio .eyebrow{color:#4e6148}
+
+/* v16: foto da Bia no círculo */
+.avatar{width:132px;height:132px;padding:0;overflow:hidden;border:2px solid #fff;box-shadow:0 0 0 1px var(--sage),0 8px 22px rgba(78,97,72,.18)}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;border-radius:50%;display:block}
