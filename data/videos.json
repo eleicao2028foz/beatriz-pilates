@@ -1,0 +1,191 @@
+[
+  {
+    "region": "costas",
+    "id": "costas-1",
+    "title": "Dor lombar",
+    "subtitle": "Desconforto na parte de baixo das costas, perto da cintura",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "costas",
+    "id": "costas-2",
+    "title": "Dor dorsal, entre as escápulas",
+    "subtitle": "Tensão na parte alta e média das costas",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "costas",
+    "id": "costas-3",
+    "title": "Dor por ficar muito sentado",
+    "subtitle": "Rigidez e cansaço depois de muito tempo na cadeira",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "costas",
+    "id": "costas-4",
+    "title": "Rigidez ao acordar",
+    "subtitle": "Corpo travado ao sair da cama pela manhã",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "pescoco",
+    "id": "pescoco-1",
+    "title": "Tensão por celular e computador",
+    "subtitle": "Pescoço sobrecarregado pela postura diante das telas",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "pescoco",
+    "id": "pescoco-2",
+    "title": "Rigidez ao acordar",
+    "subtitle": "Pescoço travado ao começar o dia",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "pescoco",
+    "id": "pescoco-3",
+    "title": "Dor que irradia para ombro ou braço",
+    "subtitle": "Se houver formigamento ou perda de força, procure avaliação",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "pescoco",
+    "id": "pescoco-4",
+    "title": "Dor de cabeça tensional",
+    "subtitle": "Desconforto na nuca e na cabeça ligado à tensão muscular",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "ombro",
+    "id": "ombro-1",
+    "title": "Dor ao levantar o braço",
+    "subtitle": "Incômodo ao alcançar algo no alto ou vestir uma blusa",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "ombro",
+    "id": "ombro-2",
+    "title": "Rigidez / ombro travado",
+    "subtitle": "Sensação de pouca amplitude e movimento preso",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "ombro",
+    "id": "ombro-3",
+    "title": "Dor por postura e tensão (trapézio)",
+    "subtitle": "Ombros elevados e pescoço carregado ao longo do dia",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "ombro",
+    "id": "ombro-4",
+    "title": "Dor após esforço ou treino",
+    "subtitle": "Desconforto depois de peso, treino ou tarefa repetitiva",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "joelho",
+    "id": "joelho-1",
+    "title": "Dor ao subir e descer escadas",
+    "subtitle": "Incômodo nos degraus, no dia a dia",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "joelho",
+    "id": "joelho-2",
+    "title": "Dor ao agachar",
+    "subtitle": "Desconforto ao sentar, levantar ou agachar",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "joelho",
+    "id": "joelho-3",
+    "title": "Rigidez e inchaço leve",
+    "subtitle": "Joelho duro ou levemente inchado depois de ficar parado",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "joelho",
+    "id": "joelho-4",
+    "title": "Dor após caminhada ou corrida",
+    "subtitle": "Desconforto depois de caminhar ou correr",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "aulas",
+    "id": "aulas-postura",
+    "title": "Melhora postural",
+    "subtitle": "A consciência da postura no dia a dia",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "aulas",
+    "id": "aulas-tonus",
+    "title": "Tônus muscular",
+    "subtitle": "Fortalecimento gradual e controlado, no seu ritmo",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "aulas",
+    "id": "aulas-equilibrio",
+    "title": "Equilíbrio",
+    "subtitle": "Estabilidade e coordenação em movimentos simples",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "aulas",
+    "id": "aulas-mobilidade",
+    "title": "Mobilidade",
+    "subtitle": "Movimento com controle, respeitando o seu limite",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "aulas",
+    "id": "aulas-estresse",
+    "title": "Alívio do estresse",
+    "subtitle": "Respiração e atenção ao movimento para desacelerar",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  }
+]
