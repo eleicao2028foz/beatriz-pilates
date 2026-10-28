@@ -137,7 +137,9 @@ $('#do-install').addEventListener('click',async()=>{ if(!dip)return; dip.prompt(
 // bloqueia zoom por gesto (iOS)
 ['gesturestart','gesturechange'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));
 
-if('serviceWorker' in navigator && location.protocol.startsWith('http')) addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+if('serviceWorker' in navigator && location.protocol.startsWith('http')) { const had=!!navigator.serviceWorker.controller; let rl=false;
+  navigator.serviceWorker.addEventListener('controllerchange',()=>{ if(rl||!had) return; rl=true; location.reload(); });
+  addEventListener('load',()=>navigator.serviceWorker.register('sw.js').then(r=>r.update&&r.update()).catch(()=>{})); }
 
 const h=location.hash.slice(1);
 history.replaceState({s:'inicio'},'','#inicio');

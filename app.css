@@ -231,12 +231,19 @@ h2.sp{margin-top:1.2rem}
 .aulas-h{margin-top:4px}
 .hor-card.hor-end{margin-top:2px;padding:16px 16px;border-color:var(--sage)}
 
-/* v10: foto de fundo só na aba Aulas (o fundo fica preso à tela, não rola) */
-#aulas{background:linear-gradient(rgba(251,248,241,.84),rgba(251,248,241,.80)),url(img/fundo-aulas.webp) center/cover no-repeat,var(--beige)}
+#aulas .card,#aulas .steps li{background:rgba(255,255,255,.93)}
+
+
+/* v12: fundos fotográficos como camada fixa (funciona no iOS); só Aulas e Sobre */
+#aulas::before,#aulas::after,#sobre::before,#sobre::after{content:"";position:fixed;left:0;right:0;bottom:0;top:calc(var(--top) + var(--sat));z-index:-1;pointer-events:none}
+#aulas::before{background-image:url(img/fundo-aulas.webp);background-size:cover;background-position:center;background-repeat:no-repeat}
+#aulas::after{background:rgba(251,248,241,.82)}
+#sobre::before{background-image:url(img/fundo-sobre.webp);background-size:cover;background-position:58% center;background-repeat:no-repeat}
+#sobre::after{background:rgba(251,248,241,.58)}
 #aulas .card,#aulas .steps li{background:rgba(255,255,255,.93)}
 #aulas .note{color:#4f554a}
-
-/* v11: foto de fundo só na aba Sobre (presa à tela, não rola) */
-#sobre{background:linear-gradient(rgba(251,248,241,.86),rgba(251,248,241,.82)),url(img/fundo-sobre.webp) 58% center/cover no-repeat,var(--beige)}
-#sobre .card{background:rgba(255,255,255,.93)}
+#sobre .card{background:rgba(255,255,255,.90)}
+#sobre .sobre-txt{margin-top:0;padding-top:10px}
+#sobre .sobre-txt h2{margin:.1rem 0 .5rem}
+#sobre .sobre-txt p:last-child{margin-bottom:.2rem}
 #sobre p{color:#3f453b}
