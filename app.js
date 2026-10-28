@@ -1,30 +1,34 @@
 (()=>{
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const app=$('#app'),title=$('#title'),back=$('#back'),scrim=$('#scrim');
-const order=['inicio','dores','dor-costas','dor-pescoco','dor-ombro','dor-joelho','aulas','aula-postura','aula-tonus','aula-equilibrio','aula-mobilidade','aula-estresse','horarios','sobre','local'];
+const order=['inicio','dores','dor-costas','dor-pescoco','dor-ombro','dor-joelho','dor-regiao','aulas','aula-postura','aula-tonus','aula-equilibrio','aula-mobilidade','aula-estresse','horarios','sobre','local'];
 const tabs=['inicio','dores','aulas','sobre','local'];
+const isReg=id=>id.startsWith('regiao-'), secId=id=>isReg(id)?'dor-regiao':id;
 const tabOf=id=>id.startsWith('dor-')?'dores':id.startsWith('aula-')?'aulas':id==='horarios'?'aulas':id;
 let cur='inicio';
 
 function go(id,push=true,instant=false){
-  if(!order.includes(id)) id='inicio';
+  if(!order.includes(secId(id))||(id==='dor-regiao')) id='inicio';
   closeSheets(); stopVideos();
   if(id===cur && !instant) return;
-  const from=$('#'+cur),to=$('#'+id);
-  const fwd=order.indexOf(id)>order.indexOf(cur);
+  if(isReg(id)) fillRegiao(id.slice(7));
+  const from=$('#'+secId(cur)),to=$('#'+secId(id));
+  const fwd=order.indexOf(secId(id))>order.indexOf(secId(cur));
   to.style.transition=from.style.transition=instant?'none':'';
   // posiciona a tela que entra do lado certo, sem animar
   to.style.transition='none'; to.classList.remove('on','out'); to.style.transform='translateX('+(fwd?24:-24)+'px)';
   void to.offsetWidth; to.style.transition=''; to.style.transform='';
   from.classList.remove('on'); from.classList.toggle('out',fwd); if(!fwd) from.classList.remove('out');
   if(!fwd) from.style.transform='translateX(24px)'; else from.style.transform='';
+  if(from===to){ to.classList.add('on'); from.style.transform=''; }
   to.classList.add('on'); to.scrollTop=0;
   setTimeout(()=>{from.style.transform=''},350);
   cur=id;
   title.textContent=to.dataset.title||'';
   back.hidden=id==='inicio';
-  app.classList.toggle('home',id==='inicio'); app.classList.toggle('nofab',id.startsWith('dor-')||id.startsWith('aula-'));
-  $$('#tabbar button').forEach(b=>b.classList.toggle('on',b.dataset.go===tabOf(id)));
+  app.classList.toggle('home',id==='inicio'); app.classList.toggle('nofab',secId(id).startsWith('dor-')||id.startsWith('aula-'));
+  $$('#tabbar button').forEach(b=>b.classList.toggle('on',b.dataset.go===tabOf(secId(id))));
+  corpo3dVisivel(id==='dores');
   if(push) history.pushState({s:id},'','#'+id);
   if(navigator.vibrate) try{navigator.vibrate(8)}catch(e){}
 }
@@ -45,12 +49,12 @@ addEventListener('popstate',e=>{
 
 // swipe horizontal entre telas (borda a borda não conflita com o carrossel)
 let x0=null,y0=null,t0=0;
-$('#screens').addEventListener('touchstart',e=>{ if(e.target.closest('.swipe')){x0=null;return;} const t=e.touches[0];x0=t.clientX;y0=t.clientY;t0=Date.now()},{passive:true});
+$('#screens').addEventListener('touchstart',e=>{ if(e.target.closest('.swipe,.nosw')){x0=null;return;} const t=e.touches[0];x0=t.clientX;y0=t.clientY;t0=Date.now()},{passive:true});
 $('#screens').addEventListener('touchend',e=>{ if(x0===null)return; const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0; x0=null;
   if(Math.abs(dx)>70&&Math.abs(dy)<45&&Date.now()-t0<600){ if(!tabs.includes(cur))return; const i=tabs.indexOf(cur)+(dx<0?1:-1); if(i>=0&&i<tabs.length) go(tabs[i]); } },{passive:true});
 
 // ---- vídeos por região (data/videos.json) ----
-const ICON={costas:'i-costas',pescoco:'i-pescoco',ombro:'i-ombro',joelho:'i-joelho','aulas-postura':'i-postura','aulas-tonus':'i-tonus','aulas-equilibrio':'i-equilibrio','aulas-mobilidade':'i-mobilidade','aulas-estresse':'i-estresse'};
+const ICON={abdomen:'i-postura',biceps:'i-ombro',triceps:'i-ombro',antebraco:'i-ombro',cotovelo:'i-ombro',coxa:'i-joelho',perna:'i-joelho',costas:'i-costas',pescoco:'i-pescoco',ombro:'i-ombro',joelho:'i-joelho','aulas-postura':'i-postura','aulas-tonus':'i-tonus','aulas-equilibrio':'i-equilibrio','aulas-mobilidade':'i-mobilidade','aulas-estresse':'i-estresse'};
 const NS='http://www.w3.org/2000/svg';
 const svgUse=(id,cls)=>{const s=document.createElementNS(NS,'svg');s.setAttribute('class',cls||'ln');const u=document.createElementNS(NS,'use');u.setAttribute('href','#'+id);s.appendChild(u);return s;};
 const el=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;};
@@ -116,17 +120,62 @@ function card(item,n){
   }
   return a;
 }
+let VIDEOS=[]; let videosPronto;
 async function loadVideos(){
   let data=[];
   try{ const r=await fetch('data/videos.json',{cache:'no-cache'}); data=await r.json(); }catch(e){}
-  $$('.vlist').forEach(l=>{
+  VIDEOS=Array.isArray(data)?data:[];
+  $$('.vlist:not([data-dyn])').forEach(l=>{
     const reg=l.dataset.region; l.textContent='';
     const items=(Array.isArray(data)?data:[]).filter(v=>v.region===reg&&(!l.dataset.id||v.id===l.dataset.id)); const single=!!l.dataset.id;
     if(!items.length){ l.appendChild(el('p','note','Os vídeos desta região aparecem aqui.')); return; }
     items.forEach((it,i)=>l.appendChild(card(Object.assign({region:reg},it),single?0:i+1)));
   });
 }
-loadVideos();
+videosPronto=loadVideos();
+
+
+// ---- corpo 3D interativo (aba Dores): carrega só quando a aba abre ----
+let REGDATA=null,regPromise=null;
+const regioes=()=>regPromise||(regPromise=fetch('data/regioes.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>REGDATA=d));
+async function fillRegiao(key){
+  const [d]=await Promise.all([regioes(),videosPronto]);
+  const rg=d.regioes.find(r=>r.id===key); const sec=$('#dor-regiao'); if(!rg) return;
+  sec.dataset.title=rg.nome; if(cur==='regiao-'+key) title.textContent=rg.nome;
+  $('#rg-h').textContent=rg.nome; $('#rg-ic').setAttribute('href','#'+(rg.icone||'i-costas'));
+  const items=(rg.videos||[]).map(id=>VIDEOS.find(v=>v.id===id)).filter(Boolean);
+  $('#rg-p').textContent=items.length>1?'Escolha o tipo de desconforto que mais parece com o seu e veja uma sequência de Pilates pensada para ele.':'Um vídeo de Pilates pensado para esta região do corpo.';
+  const l=$('#rg-list'); stopVideos(); l.textContent='';
+  if(!items.length) l.appendChild(el('p','note','Os vídeos desta região aparecem aqui.'));
+  items.forEach((it,i)=>l.appendChild(card(it,items.length>1?i+1:0)));
+  $('#rg-wa').href='https://wa.me/5545999795418?text='+encodeURIComponent('Olá! Tenho dor '+(rg.wa||'em '+rg.nome.toLowerCase())+' e gostaria de agendar uma aula experimental.');
+}
+let C3=null,C3p=null; const body3d=$('#body3d'),tip=$('#b3-tip'); let tipReg=null;
+function mostrarTip(reg,persist){
+  tipReg=reg||null; if(!reg){ tip.hidden=true; tip.classList.remove('persist'); body3d.dataset.estado=C3?'ok':body3d.dataset.estado; return; }
+  tip.querySelector('.b3-name').textContent=reg.nome; tip.classList.toggle('persist',!!persist); tip.hidden=false; if(persist) body3d.classList.add('tocou');
+}
+function abrirRegiao(reg){ if(reg) go('regiao-'+reg.id); }
+function vistaBtns(v){ $$('.b3-ctl button').forEach(b=>b.classList.toggle('on',b.dataset.v===v)); }
+function corpo3dVisivel(on){
+  if(on){ if(!C3p) iniciar3d(); else if(C3){ C3.zerar(); mostrarTip(null); C3.pausar(false); } }
+  else if(C3) C3.pausar(true);
+}
+function iniciar3d(){
+  body3d.dataset.estado='loading';
+  C3p=(async()=>{
+    try{
+      const [mod,dados]=await Promise.all([import('./js/corpo3d.js?v=23'),regioes()]);
+      C3=await mod.iniciar(body3d,{modelo:dados.modelo||'modelo/corpo.glb',dados,debug:/[?&]dbg3d/.test(location.search),
+        aoAbrir:abrirRegiao, aoSobre:(reg,persist)=>mostrarTip(reg,persist), aoMudar:({vista})=>vistaBtns(vista)});
+      body3d.dataset.estado='ok'; window.__corpo3d=C3;
+    }catch(e){
+      body3d.dataset.estado='erro'; body3d.querySelector('.b3-msg').textContent='Não foi possível mostrar o corpo 3D neste aparelho. Use a lista abaixo.'; console.warn('corpo3d',e);
+    }
+  })();
+}
+$$('.b3-ctl button').forEach(b=>b.addEventListener('click',()=>{ if(C3){ C3.vista(b.dataset.v); body3d.classList.add('tocou'); mostrarTip(null); C3.zerar(); } }));
+$('.b3-open').addEventListener('click',()=>abrirRegiao(tipReg));
 
 // instalação
 const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
@@ -143,5 +192,6 @@ if('serviceWorker' in navigator && location.protocol.startsWith('http')) { const
 
 const h=location.hash.slice(1);
 history.replaceState({s:'inicio'},'','#inicio');
-if(order.includes(h)&&h!=='inicio') go(h,true,true); else { app.classList.add('home'); }
+if(isReg(h)){ regioes().then(()=>go(h,true,true)); app.classList.add('home'); }
+else if(order.includes(h)&&h!=='inicio'&&h!=='dor-regiao') go(h,true,true); else { app.classList.add('home'); }
 })();

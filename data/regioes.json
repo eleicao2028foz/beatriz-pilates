@@ -1,0 +1,294 @@
+{
+ "_ajuda": "Regiões do corpo 3D (aba Dores). 'videos' = ids de data/videos.json (um id pode aparecer em mais de uma região). 'espelhar': true acende os dois lados (direito e esquerdo). 'zonas' = limites geométricos no modelo (y = altura, de -1 a 1; x = lateral; z = frente/costas). Para mudar a região, ajuste os números de 'zonas' ou o texto aqui, sem mexer no código.",
+ "modelo": "modelo/corpo.glb",
+ "regioes": [
+  {
+   "id": "pescoco",
+   "nome": "Pescoço",
+   "icone": "i-pescoco",
+   "wa": "no pescoço",
+   "espelhar": true,
+   "vista": "frente",
+   "videos": [
+    "pescoco-1",
+    "pescoco-2",
+    "pescoco-3",
+    "pescoco-4"
+   ]
+  },
+  {
+   "id": "ombro",
+   "nome": "Ombro",
+   "icone": "i-ombro",
+   "wa": "no ombro",
+   "espelhar": true,
+   "vista": "frente",
+   "videos": [
+    "ombro-1",
+    "ombro-2",
+    "ombro-3",
+    "ombro-4"
+   ]
+  },
+  {
+   "id": "costas_cima",
+   "nome": "Parte de cima das costas",
+   "icone": "i-costas",
+   "wa": "na parte de cima das costas",
+   "espelhar": true,
+   "vista": "costas",
+   "videos": [
+    "costas-2",
+    "costas-3",
+    "costas-4"
+   ]
+  },
+  {
+   "id": "lombar",
+   "nome": "Lombar",
+   "icone": "i-costas",
+   "wa": "na lombar",
+   "espelhar": true,
+   "vista": "costas",
+   "videos": [
+    "costas-1",
+    "costas-3",
+    "costas-4"
+   ]
+  },
+  {
+   "id": "abdomen",
+   "nome": "Abdômen",
+   "icone": "i-postura",
+   "wa": "no abdômen",
+   "espelhar": true,
+   "vista": "frente",
+   "videos": [
+    "abdomen-1"
+   ]
+  },
+  {
+   "id": "biceps",
+   "nome": "Bíceps",
+   "icone": "i-ombro",
+   "wa": "no bíceps",
+   "espelhar": true,
+   "vista": "frente",
+   "videos": [
+    "biceps-1"
+   ]
+  },
+  {
+   "id": "triceps",
+   "nome": "Tríceps",
+   "icone": "i-ombro",
+   "wa": "no tríceps",
+   "espelhar": true,
+   "vista": "costas",
+   "videos": [
+    "triceps-1"
+   ]
+  },
+  {
+   "id": "antebraco",
+   "nome": "Antebraço",
+   "icone": "i-ombro",
+   "wa": "no antebraço",
+   "espelhar": true,
+   "vista": "frente",
+   "videos": [
+    "antebraco-1"
+   ]
+  },
+  {
+   "id": "cotovelo",
+   "nome": "Cotovelo",
+   "icone": "i-ombro",
+   "wa": "no cotovelo",
+   "espelhar": true,
+   "vista": "frente",
+   "videos": [
+    "cotovelo-1"
+   ]
+  },
+  {
+   "id": "coxa",
+   "nome": "Coxa (até o joelho)",
+   "icone": "i-joelho",
+   "wa": "na coxa",
+   "espelhar": true,
+   "vista": "frente",
+   "videos": [
+    "coxa-1"
+   ]
+  },
+  {
+   "id": "joelho",
+   "nome": "Joelho",
+   "icone": "i-joelho",
+   "wa": "no joelho",
+   "espelhar": true,
+   "vista": "frente",
+   "videos": [
+    "joelho-1",
+    "joelho-2",
+    "joelho-3",
+    "joelho-4"
+   ]
+  },
+  {
+   "id": "perna",
+   "nome": "Perna (abaixo do joelho)",
+   "icone": "i-joelho",
+   "wa": "na perna",
+   "espelhar": true,
+   "vista": "frente",
+   "videos": [
+    "perna-1"
+   ]
+  }
+ ],
+ "zonas": {
+  "pescoco": {
+   "y": [
+    0.685,
+    0.8
+   ],
+   "largura": [
+    [
+     0.685,
+     0.15
+    ],
+    [
+     0.74,
+     0.085
+    ]
+   ]
+  },
+  "ombro": {
+   "centro": [
+    0.27,
+    0.56
+   ],
+   "raio": 0.14,
+   "yMin": 0.47,
+   "faixaY": [
+    0.5,
+    0.7
+   ]
+  },
+  "tronco": {
+   "bordaX": [
+    [
+     0.7,
+     0.2
+    ],
+    [
+     0.34,
+     0.205
+    ],
+    [
+     0.2,
+     0.23
+    ],
+    [
+     0.1,
+     0.27
+    ],
+    [
+     0.0,
+     0.3
+    ],
+    [
+     -0.3,
+     0.35
+    ]
+   ],
+   "meioZ": [
+    [
+     0.6,
+     -0.015
+    ],
+    [
+     0.5,
+     -0.01
+    ],
+    [
+     0.4,
+     0.0
+    ],
+    [
+     0.3,
+     0.035
+    ],
+    [
+     0.2,
+     0.045
+    ],
+    [
+     0.1,
+     0.03
+    ],
+    [
+     0.0,
+     0.0
+    ]
+   ],
+   "xMax": 0.3,
+   "yMax": 0.7,
+   "costas_cima": [
+    0.3,
+    0.685
+   ],
+   "lombar": [
+    0.0,
+    0.3
+   ],
+   "abdomen": [
+    0.0,
+    0.38
+   ]
+  },
+  "braco": {
+   "meioZ": [
+    [
+     0.5,
+     -0.055
+    ],
+    [
+     0.4,
+     -0.055
+    ],
+    [
+     0.3,
+     -0.045
+    ],
+    [
+     0.2,
+     -0.035
+    ],
+    [
+     0.1,
+     0.0
+    ],
+    [
+     0.0,
+     0.03
+    ]
+   ],
+   "cotoveloY": 0.21,
+   "cotoveloMeia": 0.055,
+   "punhoY": 0.03,
+   "xMax": 0.5,
+   "yMax": 0.62
+  },
+  "perna": {
+   "quadrilY": 0.0,
+   "joelhoY": -0.39,
+   "joelhoMeia": 0.075,
+   "tornozeloY": -0.9,
+   "xMax": 0.3
+  },
+  "suavizacao": 0.1
+ }
+}

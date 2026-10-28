@@ -17,7 +17,7 @@
 <link rel="preload" href="fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="img/cabecalho-logo.webp" as="image" type="image/webp">
-<link rel="stylesheet" href="app.css?v=22">
+<link rel="stylesheet" href="app.css?v=23">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -83,7 +83,15 @@
     <!-- DORES -->
     <section class="screen" id="dores" data-title="Dores">
       <h2>Onde você sente <em>desconforto?</em></h2>
-      <p class="lead">Escolha a região e veja como o Pilates pode ajudar.</p>
+      <p class="lead">Toque na parte do corpo que incomoda e veja os vídeos para ela.</p>
+      <div class="body3d nosw" id="body3d" data-estado="idle">
+        <canvas role="img" aria-label="Modelo 3D do corpo humano. Toque numa região para ver os vídeos. A lista de regiões está logo abaixo."></canvas>
+        <div class="b3-tip" id="b3-tip" hidden><span class="b3-name"></span><button type="button" class="b3-open">Ver vídeos<svg class="ln"><use href="#i-arrow"/></svg></button></div>
+        <div class="b3-ctl" role="group" aria-label="Lado do corpo"><button type="button" data-v="frente" class="on">Frente</button><button type="button" data-v="costas">Costas</button></div>
+        <p class="b3-hint" id="b3-hint">Arraste para girar</p>
+        <div class="b3-load"><span class="b3-spin"></span><span class="b3-msg">Carregando o corpo 3D…</span></div>
+      </div>
+      <p class="eyebrow b3-or">ou escolha pela lista</p>
       <button class="card link-card" data-go="dor-costas"><span class="row"><svg class="ln pi"><use href="#i-costas"/></svg><span><h3>Dor nas costas</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
       <button class="card link-card" data-go="dor-pescoco"><span class="row"><svg class="ln pi"><use href="#i-pescoco"/></svg><span><h3>Dor no pescoço</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
       <button class="card link-card" data-go="dor-ombro"><span class="row"><svg class="ln pi"><use href="#i-ombro"/></svg><span><h3>Dor no ombro</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
@@ -120,6 +128,14 @@
       <div class="vlist" data-region="joelho" aria-live="polite"></div>
       <p class="note">Os vídeos têm caráter informativo e não substituem avaliação médica ou fisioterápica. Se a dor for forte, persistente, vier com formigamento, perda de força ou surgir após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
       <div class="wa-dock"><a class="btn wide-btn" href="https://wa.me/5545999795418?text=Ol%C3%A1!%20Tenho%20dor%20no%20joelho%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
+    </section>
+
+    <!-- DOR POR REGIÃO (corpo 3D) -->
+    <section class="screen dorpg" id="dor-regiao" data-title="Região">
+      <header class="dp-head"><div class="pain-ic sm"><svg class="ln"><use id="rg-ic" href="#i-costas"/></svg></div><div><h2 id="rg-h">Região</h2><p id="rg-p"></p></div></header>
+      <div class="vlist" id="rg-list" data-dyn="1" aria-live="polite"></div>
+      <p class="note">Os vídeos têm caráter informativo e não substituem avaliação médica ou fisioterápica. Se a dor for forte, persistente, vier com formigamento, perda de força ou surgir após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
+      <div class="wa-dock"><a class="btn wide-btn" id="rg-wa" href="https://wa.me/5545999795418" target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
     </section>
 
     <!-- AULAS -->
@@ -246,6 +262,6 @@
     <button class="btn" id="do-install" hidden>Instalar agora</button>
   </section>
 </div>
-<script src="app.js?v=22"></script>
+<script src="app.js?v=23"></script>
 </body>
 </html>

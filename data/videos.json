@@ -144,6 +144,69 @@
     "poster": ""
   },
   {
+    "region": "abdomen",
+    "id": "abdomen-1",
+    "title": "Desconforto no abdômen",
+    "subtitle": "Vídeo em breve",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "biceps",
+    "id": "biceps-1",
+    "title": "Desconforto no bíceps",
+    "subtitle": "Vídeo em breve",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "triceps",
+    "id": "triceps-1",
+    "title": "Desconforto no tríceps",
+    "subtitle": "Vídeo em breve",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "antebraco",
+    "id": "antebraco-1",
+    "title": "Desconforto no antebraço",
+    "subtitle": "Vídeo em breve",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "cotovelo",
+    "id": "cotovelo-1",
+    "title": "Desconforto no cotovelo",
+    "subtitle": "Vídeo em breve",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "coxa",
+    "id": "coxa-1",
+    "title": "Desconforto na coxa",
+    "subtitle": "Vídeo em breve",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
+    "region": "perna",
+    "id": "perna-1",
+    "title": "Desconforto na perna, abaixo do joelho",
+    "subtitle": "Vídeo em breve",
+    "duration": "",
+    "videoUrl": "",
+    "poster": ""
+  },
+  {
     "region": "aulas",
     "id": "aulas-postura",
     "title": "Melhora postural",
