@@ -230,3 +230,8 @@ h2.sp{margin-top:1.2rem}
 /* v9: Horários e planos junto dos blocos de baixo */
 .aulas-h{margin-top:4px}
 .hor-card.hor-end{margin-top:2px;padding:16px 16px;border-color:var(--sage)}
+
+/* v10: foto de fundo só na aba Aulas (o fundo fica preso à tela, não rola) */
+#aulas{background:linear-gradient(rgba(251,248,241,.84),rgba(251,248,241,.80)),url(img/fundo-aulas.webp) center/cover no-repeat,var(--beige)}
+#aulas .card,#aulas .steps li{background:rgba(255,255,255,.93)}
+#aulas .note{color:#4f554a}
