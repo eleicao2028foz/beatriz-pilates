@@ -146,7 +146,7 @@
   {
     "region": "abdomen",
     "id": "abdomen-1",
-    "title": "Desconforto no abdômen",
+    "title": "Resultados no abdômen",
     "subtitle": "Vídeo em breve",
     "duration": "",
     "videoUrl": "",
@@ -155,7 +155,7 @@
   {
     "region": "biceps",
     "id": "biceps-1",
-    "title": "Desconforto no bíceps",
+    "title": "Resultados no bíceps",
     "subtitle": "Vídeo em breve",
     "duration": "",
     "videoUrl": "",
@@ -164,7 +164,7 @@
   {
     "region": "triceps",
     "id": "triceps-1",
-    "title": "Desconforto no tríceps",
+    "title": "Resultados no tríceps",
     "subtitle": "Vídeo em breve",
     "duration": "",
     "videoUrl": "",
@@ -173,7 +173,7 @@
   {
     "region": "antebraco",
     "id": "antebraco-1",
-    "title": "Desconforto no antebraço",
+    "title": "Resultados no antebraço",
     "subtitle": "Vídeo em breve",
     "duration": "",
     "videoUrl": "",
@@ -182,7 +182,7 @@
   {
     "region": "cotovelo",
     "id": "cotovelo-1",
-    "title": "Desconforto no cotovelo",
+    "title": "Resultados no cotovelo",
     "subtitle": "Vídeo em breve",
     "duration": "",
     "videoUrl": "",
@@ -191,7 +191,7 @@
   {
     "region": "coxa",
     "id": "coxa-1",
-    "title": "Desconforto na coxa",
+    "title": "Resultados na coxa",
     "subtitle": "Vídeo em breve",
     "duration": "",
     "videoUrl": "",
@@ -200,7 +200,7 @@
   {
     "region": "perna",
     "id": "perna-1",
-    "title": "Desconforto na perna, abaixo do joelho",
+    "title": "Resultados na perna, abaixo do joelho",
     "subtitle": "Vídeo em breve",
     "duration": "",
     "videoUrl": "",

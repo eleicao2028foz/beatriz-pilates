@@ -1,14 +1,14 @@
 (()=>{
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const app=$('#app'),title=$('#title'),back=$('#back'),scrim=$('#scrim');
-const order=['inicio','dores','dor-costas','dor-pescoco','dor-ombro','dor-joelho','dor-regiao','aulas','aula-postura','aula-tonus','aula-equilibrio','aula-mobilidade','aula-estresse','horarios','sobre','local'];
-const tabs=['inicio','dores','aulas','sobre','local'];
-const isReg=id=>id.startsWith('regiao-'), secId=id=>isReg(id)?'dor-regiao':id;
-const tabOf=id=>id.startsWith('dor-')?'dores':id.startsWith('aula-')?'aulas':id==='horarios'?'aulas':id;
+const order=['inicio','resultados','res-costas','res-pescoco','res-ombro','res-joelho','res-regiao','aulas','aula-postura','aula-tonus','aula-equilibrio','aula-mobilidade','aula-estresse','horarios','sobre','local'];
+const tabs=['inicio','resultados','aulas','sobre','local'];
+const isReg=id=>id.startsWith('regiao-'), secId=id=>isReg(id)?'res-regiao':id;
+const tabOf=id=>id.startsWith('res-')?'resultados':id.startsWith('aula-')?'aulas':id==='horarios'?'aulas':id;
 let cur='inicio';
 
 function go(id,push=true,instant=false){
-  if(!order.includes(secId(id))||(id==='dor-regiao')) id='inicio';
+  if(!order.includes(secId(id))||(id==='res-regiao')) id='inicio';
   closeSheets(); stopVideos();
   if(id===cur && !instant) return;
   if(isReg(id)) fillRegiao(id.slice(7));
@@ -26,9 +26,9 @@ function go(id,push=true,instant=false){
   cur=id;
   title.textContent=to.dataset.title||'';
   back.hidden=id==='inicio';
-  app.classList.toggle('home',id==='inicio'); app.classList.toggle('nofab',secId(id).startsWith('dor-')||id.startsWith('aula-'));
+  app.classList.toggle('home',id==='inicio'); app.classList.toggle('nofab',secId(id).startsWith('res-')||id.startsWith('aula-'));
   $$('#tabbar button').forEach(b=>b.classList.toggle('on',b.dataset.go===tabOf(secId(id))));
-  corpo3dVisivel(id==='dores');
+  corpo3dVisivel(id==='resultados');
   if(push) history.pushState({s:id},'','#'+id);
   if(navigator.vibrate) try{navigator.vibrate(8)}catch(e){}
 }
@@ -135,20 +135,20 @@ async function loadVideos(){
 videosPronto=loadVideos();
 
 
-// ---- corpo 3D interativo (aba Dores): carrega só quando a aba abre ----
+// ---- corpo 3D interativo (aba Resultados): carrega só quando a aba abre ----
 let REGDATA=null,regPromise=null;
 const regioes=()=>regPromise||(regPromise=fetch('data/regioes.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>REGDATA=d));
 async function fillRegiao(key){
   const [d]=await Promise.all([regioes(),videosPronto]);
-  const rg=d.regioes.find(r=>r.id===key); const sec=$('#dor-regiao'); if(!rg) return;
+  const rg=d.regioes.find(r=>r.id===key); const sec=$('#res-regiao'); if(!rg) return;
   sec.dataset.title=rg.nome; if(cur==='regiao-'+key) title.textContent=rg.nome;
   $('#rg-h').textContent=rg.nome; $('#rg-ic').setAttribute('href','#'+(rg.icone||'i-costas'));
   const items=(rg.videos||[]).map(id=>VIDEOS.find(v=>v.id===id)).filter(Boolean);
-  $('#rg-p').textContent=items.length>1?'Escolha o tipo de desconforto que mais parece com o seu e veja uma sequência de Pilates pensada para ele.':'Um vídeo de Pilates pensado para esta região do corpo.';
+  $('#rg-p').textContent=items.length>1?'Escolha um vídeo e veja o resultado de pessoas que a Bia já atendeu com incômodo nesta região.':'Um vídeo de uma pessoa que a Bia já atendeu, mostrando o resultado nesta região.';
   const l=$('#rg-list'); stopVideos(); l.textContent='';
   if(!items.length) l.appendChild(el('p','note','Os vídeos desta região aparecem aqui.'));
   items.forEach((it,i)=>l.appendChild(card(it,items.length>1?i+1:0)));
-  $('#rg-wa').href='https://wa.me/5545999795418?text='+encodeURIComponent('Olá! Tenho dor '+(rg.wa||'em '+rg.nome.toLowerCase())+' e gostaria de agendar uma aula experimental.');
+  $('#rg-wa').href='https://wa.me/5545999795418?text='+encodeURIComponent('Olá! Vi os resultados da região "'+rg.nome.toLowerCase()+'" no app e gostaria de agendar uma aula experimental.');
 }
 let C3=null,C3p=null; const body3d=$('#body3d'),tip=$('#b3-tip'); let tipReg=null;
 function mostrarTip(reg,persist){
@@ -165,7 +165,7 @@ function iniciar3d(){
   body3d.dataset.estado='loading';
   C3p=(async()=>{
     try{
-      const [mod,dados]=await Promise.all([import('./js/corpo3d.js?v=23'),regioes()]);
+      const [mod,dados]=await Promise.all([import('./js/corpo3d.js?v=24'),regioes()]);
       C3=await mod.iniciar(body3d,{modelo:dados.modelo||'modelo/corpo.glb',dados,debug:/[?&]dbg3d/.test(location.search),
         aoAbrir:abrirRegiao, aoSobre:(reg,persist)=>mostrarTip(reg,persist), aoMudar:({vista})=>vistaBtns(vista)});
       body3d.dataset.estado='ok'; window.__corpo3d=C3;
@@ -190,8 +190,9 @@ if('serviceWorker' in navigator && location.protocol.startsWith('http')) { const
   navigator.serviceWorker.addEventListener('controllerchange',()=>{ if(rl||!had) return; rl=true; location.reload(); });
   addEventListener('load',()=>navigator.serviceWorker.register('sw.js').then(r=>r.update&&r.update()).catch(()=>{})); }
 
-const h=location.hash.slice(1);
+const LEG={dores:'resultados','dor-costas':'res-costas','dor-pescoco':'res-pescoco','dor-ombro':'res-ombro','dor-joelho':'res-joelho'};
+const h=LEG[location.hash.slice(1)]||location.hash.slice(1);
 history.replaceState({s:'inicio'},'','#inicio');
 if(isReg(h)){ regioes().then(()=>go(h,true,true)); app.classList.add('home'); }
-else if(order.includes(h)&&h!=='inicio'&&h!=='dor-regiao') go(h,true,true); else { app.classList.add('home'); }
+else if(order.includes(h)&&h!=='inicio'&&h!=='res-regiao') go(h,true,true); else { app.classList.add('home'); }
 })();

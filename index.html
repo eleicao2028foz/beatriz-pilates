@@ -17,7 +17,7 @@
 <link rel="preload" href="fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="img/cabecalho-logo.webp" as="image" type="image/webp">
-<link rel="stylesheet" href="app.css?v=23">
+<link rel="stylesheet" href="app.css?v=24">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -32,6 +32,7 @@
     <symbol id="i-equilibrio" viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M12 6.500v7.500M3.500 9.200L12 8l8.500 1.200M12 14v7M12 14.200l4.600 2.300-4.600 2.600"/></symbol>
     <symbol id="i-mobilidade" viewBox="0 0 24 24"><circle cx="13.200" cy="4" r="2"/><path d="M13 6.500l-1.600 6.500M11.400 13L8.600 20.500M11.400 13l4.300 3.400.9 4M12.800 8.200L9.400 11M12.900 8.200l3.300 3.100"/></symbol>
     <symbol id="i-estresse" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.100"/><path d="M12 7.800v5.200M12 9.400L8 13.800M12 9.400l4 4.400M4.500 18.500c3-.8 5.200-3.500 7.500-3.500s4.500 2.700 7.500 3.500M7 19.500c2-.6 3.500-1.300 5-1.300s3 .7 5 1.300"/><path d="M4.200 6.200v2M3.200 7.200h2M19.800 4.200v2M18.800 5.200h2" opacity=".6"/></symbol>
+    <symbol id="i-resultados" viewBox="0 0 24 24"><path d="M3.5 17.5l5.500-5.500 3.500 3.500 7.500-8"/><path d="M15 7.500h5v5"/></symbol>
     <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></symbol>
     <symbol id="i-aulas" viewBox="0 0 24 24"><circle cx="12" cy="5.5" r="2.3"/><path d="M5 20c1-5 3-8 7-8s6 3 7 8M3 11.5c3 0 6-1 9-1s6 1 9 1"/></symbol>
     <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
@@ -70,71 +71,71 @@
         <svg class="ln hc-ar"><use href="#i-arrow"/></svg>
       </a>
 
-      <p class="eyebrow pain-h">Toque na região que mais incomoda</p>
+      <p class="eyebrow pain-h">Veja resultados por região do corpo</p>
       <div class="tiles pimgs">
-        <button class="pimg" type="button" data-go="dor-costas" aria-label="Dor nas costas"><img src="img/dor-costas.webp" width="520" height="455" alt="" decoding="async"></button>
-        <button class="pimg" type="button" data-go="dor-pescoco" aria-label="Dor no pescoço"><img src="img/dor-pescoco.webp" width="520" height="455" alt="" decoding="async"></button>
-        <button class="pimg" type="button" data-go="dor-ombro" aria-label="Dor no ombro"><img src="img/dor-ombro.webp" width="520" height="447" alt="" decoding="async"></button>
-        <button class="pimg" type="button" data-go="dor-joelho" aria-label="Dor no joelho"><img src="img/dor-joelho.webp" width="520" height="447" alt="" decoding="async"></button>
+        <button class="pimg" type="button" data-go="res-costas" aria-label="Resultados nas costas"><img src="img/dor-costas.webp" width="520" height="455" alt="" decoding="async"></button>
+        <button class="pimg" type="button" data-go="res-pescoco" aria-label="Resultados no pescoço"><img src="img/dor-pescoco.webp" width="520" height="455" alt="" decoding="async"></button>
+        <button class="pimg" type="button" data-go="res-ombro" aria-label="Resultados no ombro"><img src="img/dor-ombro.webp" width="520" height="447" alt="" decoding="async"></button>
+        <button class="pimg" type="button" data-go="res-joelho" aria-label="Resultados no joelho"><img src="img/dor-joelho.webp" width="520" height="447" alt="" decoding="async"></button>
       </div>
     </section>
 
 
-    <!-- DORES -->
-    <section class="screen" id="dores" data-title="Dores">
-      <h2>Onde você sente <em>desconforto?</em></h2>
-      <p class="lead">Toque na parte do corpo que incomoda e veja os vídeos para ela.</p>
+    <!-- RESULTADOS -->
+    <section class="screen" id="resultados" data-title="Resultados">
+      <h2>Resultados de quem a Bia <em>já atendeu</em></h2>
+      <p class="lead">Toque na parte do corpo que você quer conhecer e veja vídeos de pessoas que a Bia já atendeu.</p>
       <div class="body3d nosw" id="body3d" data-estado="idle">
-        <canvas role="img" aria-label="Modelo 3D do corpo humano. Toque numa região para ver os vídeos. A lista de regiões está logo abaixo."></canvas>
-        <div class="b3-tip" id="b3-tip" hidden><span class="b3-name"></span><button type="button" class="b3-open">Ver vídeos<svg class="ln"><use href="#i-arrow"/></svg></button></div>
+        <canvas role="img" aria-label="Modelo 3D do corpo humano. Toque numa região para ver os resultados. A lista de regiões está logo abaixo."></canvas>
+        <div class="b3-tip" id="b3-tip" hidden><span class="b3-name"></span><button type="button" class="b3-open">Ver resultados<svg class="ln"><use href="#i-arrow"/></svg></button></div>
         <div class="b3-ctl" role="group" aria-label="Lado do corpo"><button type="button" data-v="frente" class="on">Frente</button><button type="button" data-v="costas">Costas</button></div>
         <p class="b3-hint" id="b3-hint">Arraste para girar</p>
         <div class="b3-load"><span class="b3-spin"></span><span class="b3-msg">Carregando o corpo 3D…</span></div>
       </div>
       <p class="eyebrow b3-or">ou escolha pela lista</p>
-      <button class="card link-card" data-go="dor-costas"><span class="row"><svg class="ln pi"><use href="#i-costas"/></svg><span><h3>Dor nas costas</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
-      <button class="card link-card" data-go="dor-pescoco"><span class="row"><svg class="ln pi"><use href="#i-pescoco"/></svg><span><h3>Dor no pescoço</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
-      <button class="card link-card" data-go="dor-ombro"><span class="row"><svg class="ln pi"><use href="#i-ombro"/></svg><span><h3>Dor no ombro</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
-      <button class="card link-card" data-go="dor-joelho"><span class="row"><svg class="ln pi"><use href="#i-joelho"/></svg><span><h3>Dor no joelho</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
+      <button class="card link-card" data-go="res-costas"><span class="row"><svg class="ln pi"><use href="#i-costas"/></svg><span><h3>Costas</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
+      <button class="card link-card" data-go="res-pescoco"><span class="row"><svg class="ln pi"><use href="#i-pescoco"/></svg><span><h3>Pescoço</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
+      <button class="card link-card" data-go="res-ombro"><span class="row"><svg class="ln pi"><use href="#i-ombro"/></svg><span><h3>Ombro</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
+      <button class="card link-card" data-go="res-joelho"><span class="row"><svg class="ln pi"><use href="#i-joelho"/></svg><span><h3>Joelho</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
     </section>
 
-    <!-- DOR NAS COSTAS -->
-    <section class="screen dorpg" id="dor-costas" data-title="Costas" data-region="costas">
-      <header class="dp-head"><div class="pain-ic sm"><svg class="ln"><use href="#i-costas"/></svg></div><div><h2>Dor nas costas</h2><p>Escolha o tipo de desconforto que mais parece com o seu e veja uma sequência de Pilates pensada para ele.</p></div></header>
+    <!-- RESULTADOS: COSTAS -->
+    <section class="screen dorpg" id="res-costas" data-title="Costas" data-region="costas">
+      <header class="dp-head"><div class="pain-ic sm"><svg class="ln"><use href="#i-costas"/></svg></div><div><h2>Costas</h2><p>Escolha um vídeo e veja o resultado de pessoas que a Bia já atendeu com incômodo nesta região.</p></div></header>
       <div class="vlist" data-region="costas" aria-live="polite"></div>
-      <p class="note">Os vídeos têm caráter informativo e não substituem avaliação médica ou fisioterápica. Se a dor for forte, persistente, vier com formigamento, perda de força ou surgir após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
-      <div class="wa-dock"><a class="btn wide-btn" href="https://wa.me/5545999795418?text=Ol%C3%A1!%20Tenho%20dor%20nas%20costas%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
+      <p class="note">Cada pessoa responde de um jeito, e os resultados variam: os vídeos mostram experiências reais, não são promessa de resultado nem substituem avaliação médica ou fisioterápica. Se sentir dor forte, persistente, formigamento, perda de força ou após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
+      <div class="wa-dock"><a class="btn wide-btn" href="https://wa.me/5545999795418?text=Ol%C3%A1!%20Vi%20os%20resultados%20das%20costas%20no%20app%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
     </section>
 
-    <!-- DOR NO PESCOÇO -->
-    <section class="screen dorpg" id="dor-pescoco" data-title="Pescoço" data-region="pescoco">
-      <header class="dp-head"><div class="pain-ic sm"><svg class="ln"><use href="#i-pescoco"/></svg></div><div><h2>Dor no pescoço</h2><p>Escolha o tipo de desconforto que mais parece com o seu e veja uma sequência de Pilates pensada para ele.</p></div></header>
+    <!-- RESULTADOS: PESCOÇO -->
+    <section class="screen dorpg" id="res-pescoco" data-title="Pescoço" data-region="pescoco">
+      <header class="dp-head"><div class="pain-ic sm"><svg class="ln"><use href="#i-pescoco"/></svg></div><div><h2>Pescoço</h2><p>Escolha um vídeo e veja o resultado de pessoas que a Bia já atendeu com incômodo nesta região.</p></div></header>
       <div class="vlist" data-region="pescoco" aria-live="polite"></div>
-      <p class="note">Os vídeos têm caráter informativo e não substituem avaliação médica ou fisioterápica. Se a dor for forte, persistente, vier com formigamento, perda de força ou surgir após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
-      <div class="wa-dock"><a class="btn wide-btn" href="https://wa.me/5545999795418?text=Ol%C3%A1!%20Tenho%20dor%20no%20pesco%C3%A7o%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
+      <p class="note">Cada pessoa responde de um jeito, e os resultados variam: os vídeos mostram experiências reais, não são promessa de resultado nem substituem avaliação médica ou fisioterápica. Se sentir dor forte, persistente, formigamento, perda de força ou após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
+      <div class="wa-dock"><a class="btn wide-btn" href="https://wa.me/5545999795418?text=Ol%C3%A1!%20Vi%20os%20resultados%20do%20pesco%C3%A7o%20no%20app%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
     </section>
 
-    <!-- DOR NO OMBRO -->
-    <section class="screen dorpg" id="dor-ombro" data-title="Ombro" data-region="ombro">
-      <header class="dp-head"><div class="pain-ic sm"><svg class="ln"><use href="#i-ombro"/></svg></div><div><h2>Dor no ombro</h2><p>Escolha o tipo de desconforto que mais parece com o seu e veja uma sequência de Pilates pensada para ele.</p></div></header>
+    <!-- RESULTADOS: OMBRO -->
+    <section class="screen dorpg" id="res-ombro" data-title="Ombro" data-region="ombro">
+      <header class="dp-head"><div class="pain-ic sm"><svg class="ln"><use href="#i-ombro"/></svg></div><div><h2>Ombro</h2><p>Escolha um vídeo e veja o resultado de pessoas que a Bia já atendeu com incômodo nesta região.</p></div></header>
       <div class="vlist" data-region="ombro" aria-live="polite"></div>
-      <p class="note">Os vídeos têm caráter informativo e não substituem avaliação médica ou fisioterápica. Se a dor for forte, persistente, vier com formigamento, perda de força ou surgir após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
-      <div class="wa-dock"><a class="btn wide-btn" href="https://wa.me/5545999795418?text=Ol%C3%A1!%20Tenho%20dor%20no%20ombro%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
+      <p class="note">Cada pessoa responde de um jeito, e os resultados variam: os vídeos mostram experiências reais, não são promessa de resultado nem substituem avaliação médica ou fisioterápica. Se sentir dor forte, persistente, formigamento, perda de força ou após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
+      <div class="wa-dock"><a class="btn wide-btn" href="https://wa.me/5545999795418?text=Ol%C3%A1!%20Vi%20os%20resultados%20do%20ombro%20no%20app%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
     </section>
 
-    <!-- DOR NO JOELHO -->
-    <section class="screen dorpg" id="dor-joelho" data-title="Joelho" data-region="joelho">
-      <header class="dp-head"><div class="pain-ic sm"><svg class="ln"><use href="#i-joelho"/></svg></div><div><h2>Dor no joelho</h2><p>Escolha o tipo de desconforto que mais parece com o seu e veja uma sequência de Pilates pensada para ele.</p></div></header>
+    <!-- RESULTADOS: JOELHO -->
+    <section class="screen dorpg" id="res-joelho" data-title="Joelho" data-region="joelho">
+      <header class="dp-head"><div class="pain-ic sm"><svg class="ln"><use href="#i-joelho"/></svg></div><div><h2>Joelho</h2><p>Escolha um vídeo e veja o resultado de pessoas que a Bia já atendeu com incômodo nesta região.</p></div></header>
       <div class="vlist" data-region="joelho" aria-live="polite"></div>
-      <p class="note">Os vídeos têm caráter informativo e não substituem avaliação médica ou fisioterápica. Se a dor for forte, persistente, vier com formigamento, perda de força ou surgir após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
-      <div class="wa-dock"><a class="btn wide-btn" href="https://wa.me/5545999795418?text=Ol%C3%A1!%20Tenho%20dor%20no%20joelho%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
+      <p class="note">Cada pessoa responde de um jeito, e os resultados variam: os vídeos mostram experiências reais, não são promessa de resultado nem substituem avaliação médica ou fisioterápica. Se sentir dor forte, persistente, formigamento, perda de força ou após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
+      <div class="wa-dock"><a class="btn wide-btn" href="https://wa.me/5545999795418?text=Ol%C3%A1!%20Vi%20os%20resultados%20do%20joelho%20no%20app%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
     </section>
 
-    <!-- DOR POR REGIÃO (corpo 3D) -->
-    <section class="screen dorpg" id="dor-regiao" data-title="Região">
+    <!-- RESULTADOS POR REGIÃO (corpo 3D) -->
+    <section class="screen dorpg" id="res-regiao" data-title="Região">
       <header class="dp-head"><div class="pain-ic sm"><svg class="ln"><use id="rg-ic" href="#i-costas"/></svg></div><div><h2 id="rg-h">Região</h2><p id="rg-p"></p></div></header>
       <div class="vlist" id="rg-list" data-dyn="1" aria-live="polite"></div>
-      <p class="note">Os vídeos têm caráter informativo e não substituem avaliação médica ou fisioterápica. Se a dor for forte, persistente, vier com formigamento, perda de força ou surgir após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
+      <p class="note">Cada pessoa responde de um jeito, e os resultados variam: os vídeos mostram experiências reais, não são promessa de resultado nem substituem avaliação médica ou fisioterápica. Se sentir dor forte, persistente, formigamento, perda de força ou após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
       <div class="wa-dock"><a class="btn wide-btn" id="rg-wa" href="https://wa.me/5545999795418" target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
     </section>
 
@@ -212,7 +213,7 @@
     <section class="screen" id="sobre" data-title="Sobre a Bia">
       <div class="avatar"><img src="img/foto-bia.webp" width="500" height="500" alt="Bia, instrutora do Studio" decoding="async"></div>
       <div class="card sobre-txt"><h2>Prazer, <em>Bia</em></h2>
-      <p>Eu sou a Beatriz, a Bia, instrutora do Studio de Pilates Beatriz Santos. Aqui o atendimento é próximo e cuidadoso: cada aluno é visto como único, com seu corpo, sua história e seus objetivos.</p>
+      <p>Eu sou a Beatriz, a Bia, instrutora do Studio de Pilates Beatriz Santos. Aqui o atendimento é próximo e cuidadoso: cada pessoa é vista como única, com seu corpo, sua história e seus objetivos.</p>
       <p>Minha proposta é que você se sinta bem-vindo(a) desde a primeira aula, num ambiente tranquilo, para se movimentar com segurança e orientação.</p></div>
       <div class="card"><h3>Formação</h3><p><mark class="ph">[Formação e CREFITO nº ______ — a confirmar com a Bia]</mark></p></div>
     </section>
@@ -236,7 +237,7 @@
 
   <nav class="tabbar" id="tabbar" aria-label="Navegação">
     <button data-go="inicio" class="on"><svg class="ln"><use href="#i-home"/></svg><span>Início</span></button>
-    <button data-go="dores"><svg class="ln"><use href="#i-costas"/></svg><span>Dores</span></button>
+    <button data-go="resultados"><svg class="ln"><use href="#i-resultados"/></svg><span>Resultados</span></button>
     <button data-go="aulas"><svg class="ln"><use href="#i-aulas"/></svg><span>Aulas</span></button>
     <button data-go="sobre"><svg class="ln"><use href="#i-user"/></svg><span>Sobre</span></button>
     <button data-go="local"><svg class="ln"><use href="#i-pin"/></svg><span>Local</span></button>
@@ -262,6 +263,6 @@
     <button class="btn" id="do-install" hidden>Instalar agora</button>
   </section>
 </div>
-<script src="app.js?v=23"></script>
+<script src="app.js?v=24"></script>
 </body>
 </html>

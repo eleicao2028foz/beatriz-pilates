@@ -1,5 +1,5 @@
 {
- "_ajuda": "Regiões do corpo 3D (aba Dores). 'videos' = ids de data/videos.json (um id pode aparecer em mais de uma região). 'espelhar': true acende os dois lados (direito e esquerdo). 'zonas' = limites geométricos no modelo (y = altura, de -1 a 1; x = lateral; z = frente/costas). Para mudar a região, ajuste os números de 'zonas' ou o texto aqui, sem mexer no código.",
+ "_ajuda": "Regiões do corpo 3D (aba Resultados). 'videos' = ids de data/videos.json (um id pode aparecer em mais de uma região). 'espelhar': true acende os dois lados (direito e esquerdo). 'zonas' = limites geométricos no modelo (y = altura, de -1 a 1; x = lateral; z = frente/costas). Para mudar a região, ajuste os números de 'zonas' ou o texto aqui, sem mexer no código.",
  "modelo": "modelo/corpo.glb",
  "regioes": [
   {
