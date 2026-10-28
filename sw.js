@@ -1,4 +1,4 @@
-const V='studio-bia-v20';
+const V='studio-bia-v21';
 const SHELL=['./','index.html','app.css','app.js','manifest.webmanifest','fonts/cormorant.woff2','fonts/cormorant-italic.woff2','fonts/jost.woff2','img/cabecalho-logo.webp','img/dor-costas.webp','img/dor-pescoco.webp','img/dor-ombro.webp','img/dor-joelho.webp','img/fundo-aulas.webp','img/fundo-sobre.webp','img/fundo-dores.webp','img/fundo-local.webp','img/fundo-inicio.webp','img/foto-bia.webp','data/videos.json','icons/icon-192.png','icons/icon-512.png','icons/apple-touch-icon.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(SHELL.map(u=>new Request(u,{cache:'reload'})))).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
