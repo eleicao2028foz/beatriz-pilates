@@ -1,7 +1,7 @@
 (()=>{
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const app=$('#app'),title=$('#title'),back=$('#back'),scrim=$('#scrim');
-const order=['inicio','resultados','res-costas','res-pescoco','res-ombro','res-joelho','res-regiao','aulas','aula-postura','aula-tonus','aula-equilibrio','aula-mobilidade','aula-estresse','horarios','sobre','local'];
+const order=['inicio','resultados','res-costas','res-pescoco','res-ombro','res-joelho','res-pernas','res-bracos','res-regiao','aulas','aula-postura','aula-tonus','aula-equilibrio','aula-mobilidade','aula-estresse','horarios','sobre','local'];
 const tabs=['inicio','resultados','aulas','sobre','local'];
 const isReg=id=>id.startsWith('regiao-'), secId=id=>isReg(id)?'res-regiao':id;
 const tabOf=id=>id.startsWith('res-')?'resultados':id.startsWith('aula-')?'aulas':id==='horarios'?'aulas':id;
@@ -27,8 +27,8 @@ function go(id,push=true,instant=false){
   title.textContent=to.dataset.title||'';
   back.hidden=id==='inicio';
   app.classList.toggle('home',id==='inicio'); app.classList.toggle('nofab',secId(id).startsWith('res-')||id.startsWith('aula-'));
-  $$('#tabbar button').forEach(b=>b.classList.toggle('on',b.dataset.go===tabOf(secId(id))));
-  corpo3dVisivel(id==='resultados');
+  $$('#tabbar button').forEach(b=>b.classList.toggle('on',b.dataset.go===(isReg(id)?'inicio':tabOf(secId(id)))));
+  corpo3dVisivel(id==='inicio');
   if(push) history.pushState({s:id},'','#'+id);
   if(navigator.vibrate) try{navigator.vibrate(8)}catch(e){}
 }
@@ -126,8 +126,9 @@ async function loadVideos(){
   try{ const r=await fetch('data/videos.json',{cache:'no-cache'}); data=await r.json(); }catch(e){}
   VIDEOS=Array.isArray(data)?data:[];
   $$('.vlist:not([data-dyn])').forEach(l=>{
-    const reg=l.dataset.region; l.textContent='';
-    const items=(Array.isArray(data)?data:[]).filter(v=>v.region===reg&&(!l.dataset.id||v.id===l.dataset.id)); const single=!!l.dataset.id;
+    const regs=l.dataset.regions?l.dataset.regions.split(','):null; const reg=l.dataset.region; l.textContent='';
+    const all=Array.isArray(data)?data:[];
+    const items=regs?regs.flatMap(r=>all.filter(v=>v.region===r)):all.filter(v=>v.region===reg&&(!l.dataset.id||v.id===l.dataset.id)); const single=!!l.dataset.id;
     if(!items.length){ l.appendChild(el('p','note','Os vídeos desta região aparecem aqui.')); return; }
     items.forEach((it,i)=>l.appendChild(card(Object.assign({region:reg},it),single?0:i+1)));
   });
@@ -135,7 +136,7 @@ async function loadVideos(){
 videosPronto=loadVideos();
 
 
-// ---- corpo 3D interativo (aba Resultados): carrega só quando a aba abre ----
+// ---- corpo 3D interativo (Início): carrega só quando a aba abre ----
 let REGDATA=null,regPromise=null;
 const regioes=()=>regPromise||(regPromise=fetch('data/regioes.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>REGDATA=d));
 async function fillRegiao(key){
@@ -165,17 +166,20 @@ function iniciar3d(){
   body3d.dataset.estado='loading';
   C3p=(async()=>{
     try{
-      const [mod,dados]=await Promise.all([import('./js/corpo3d.js?v=24'),regioes()]);
+      const [mod,dados]=await Promise.all([import('./js/corpo3d.js?v=26'),regioes()]);
       C3=await mod.iniciar(body3d,{modelo:dados.modelo||'modelo/corpo.glb',dados,debug:/[?&]dbg3d/.test(location.search),
         aoAbrir:abrirRegiao, aoSobre:(reg,persist)=>mostrarTip(reg,persist), aoMudar:({vista})=>vistaBtns(vista)});
       body3d.dataset.estado='ok'; window.__corpo3d=C3;
     }catch(e){
-      body3d.dataset.estado='erro'; body3d.querySelector('.b3-msg').textContent='Não foi possível mostrar o corpo 3D neste aparelho. Use a lista abaixo.'; console.warn('corpo3d',e);
+      body3d.dataset.estado='erro'; body3d.querySelector('.b3-msg').textContent='Não foi possível mostrar o corpo 3D neste aparelho. Veja as regiões na aba Resultados.'; console.warn('corpo3d',e);
     }
   })();
 }
 $$('.b3-ctl button').forEach(b=>b.addEventListener('click',()=>{ if(C3){ C3.vista(b.dataset.v); body3d.classList.add('tocou'); mostrarTip(null); C3.zerar(); } }));
 $('.b3-open').addEventListener('click',()=>abrirRegiao(tipReg));
+
+// esconde o botão flutuante do WhatsApp enquanto o cartão 'Agendar aula experimental' está na tela
+if('IntersectionObserver' in window){ const wc=$('#inicio .hero-card'); if(wc) new IntersectionObserver(e=>app.classList.toggle('wavis',e[0].isIntersecting),{threshold:.6}).observe(wc); }
 
 // instalação
 const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
@@ -194,5 +198,5 @@ const LEG={dores:'resultados','dor-costas':'res-costas','dor-pescoco':'res-pesco
 const h=LEG[location.hash.slice(1)]||location.hash.slice(1);
 history.replaceState({s:'inicio'},'','#inicio');
 if(isReg(h)){ regioes().then(()=>go(h,true,true)); app.classList.add('home'); }
-else if(order.includes(h)&&h!=='inicio'&&h!=='res-regiao') go(h,true,true); else { app.classList.add('home'); }
+else if(order.includes(h)&&h!=='inicio'&&h!=='res-regiao') go(h,true,true); else { app.classList.add('home'); setTimeout(()=>corpo3dVisivel(true),250); }
 })();

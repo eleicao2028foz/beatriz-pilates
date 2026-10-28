@@ -85,7 +85,7 @@ mark.ph{background:#FFE066;color:#8A5300;padding:.05em .4em;border-radius:3px;fo
 
 /* fab + tabbar */
 .fab{position:absolute;right:calc(16px + var(--sar));bottom:calc(var(--tab) + var(--sab) + 14px);z-index:8;display:flex;align-items:center;gap:8px;background:#2fa866;color:#fff;padding:12px 18px 12px 14px;border-radius:999px;box-shadow:0 8px 20px rgba(30,100,60,.35);font-weight:400;font-size:.95rem;transition:transform .15s,opacity .25s}
-#app.home .fab,#app.nofab .fab{opacity:0;pointer-events:none;transform:translateY(10px)}
+#app.home.wavis .fab,#app.nofab .fab{opacity:0;pointer-events:none;transform:translateY(10px)}
 .tabbar{position:absolute;left:0;right:0;bottom:0;z-index:7;height:calc(var(--tab) + var(--sab));padding:0 var(--sar) var(--sab) var(--sal);display:flex;background:rgba(250,247,242,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--sand)}
 .tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--gray);font-size:.64rem;letter-spacing:.06em;transition:color .2s}
 .tabbar svg{width:23px;height:23px}
@@ -306,3 +306,13 @@ a.map-ph span{font-family:var(--serif);font-size:1.1rem;letter-spacing:.02em;bac
 .b3-or{text-align:center;margin:6px 0 10px;color:#4f554a}
 @media (prefers-reduced-motion:reduce){.b3-spin{animation-duration:2.4s}}
 .body3d:has(.b3-tip:not([hidden])) .b3-hint{opacity:0}
+
+/* v25: corpo 3D na Início; botões de imagem na aba Resultados */
+.home-cap{font:400 clamp(1.7rem,7.4vw,2.1rem)/1.12 var(--serif);text-align:center;color:#3f453b;margin:6px 0 10px}
+.home-cap em{color:var(--sage-d)}
+#inicio .body3d{height:clamp(380px,56dvh,560px);margin:0 0 14px;background:radial-gradient(70% 55% at 50% 42%,rgba(255,255,255,.92),rgba(255,255,255,.6) 70%),rgba(255,255,255,.55)}
+.b3-alt{display:none;margin-top:4px;padding:9px 16px;border-radius:999px;background:var(--sage-d);color:#fff;font:400 .85rem var(--sans);letter-spacing:.03em}
+.body3d[data-estado=erro] .b3-alt{display:inline-flex}
+.pimg{position:relative}
+.pimg .pt{position:absolute;left:5%;right:5%;bottom:13%;text-align:center;font:500 clamp(.98rem,4.3vw,1.14rem)/1.15 var(--serif);color:#3d4a3a;pointer-events:none;letter-spacing:.005em}
+#resultados>.tiles{margin-top:14px}

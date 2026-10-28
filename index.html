@@ -17,7 +17,7 @@
 <link rel="preload" href="fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="img/cabecalho-logo.webp" as="image" type="image/webp">
-<link rel="stylesheet" href="app.css?v=24">
+<link rel="stylesheet" href="app.css?v=26">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -59,6 +59,15 @@
     <section class="screen on" id="inicio" data-title="">
       <img class="brand-img" src="img/cabecalho-logo.webp" width="1200" height="225" alt="Studio de Pilates Beatriz Santos · Santa Terezinha de Itaipu - PR" decoding="async" fetchpriority="high">
 
+      <h2 class="home-cap" id="home-cap">Clique onde <em>dói</em> em você</h2>
+      <div class="body3d nosw" id="body3d" data-estado="idle">
+        <canvas role="img" aria-label="Modelo 3D do corpo humano. Toque numa região para ver os vídeos de resultados. As mesmas regiões estão na aba Resultados."></canvas>
+        <div class="b3-tip" id="b3-tip" hidden><span class="b3-name"></span><button type="button" class="b3-open">Ver vídeos<svg class="ln"><use href="#i-arrow"/></svg></button></div>
+        <div class="b3-ctl" role="group" aria-label="Lado do corpo"><button type="button" data-v="frente" class="on">Frente</button><button type="button" data-v="costas">Costas</button></div>
+        <p class="b3-hint" id="b3-hint">Arraste para girar</p>
+        <div class="b3-load"><span class="b3-spin"></span><span class="b3-msg">Carregando o corpo 3D…</span><button type="button" class="b3-alt" data-go="resultados">Ver a aba Resultados</button></div>
+      </div>
+
       <a class="hero-card" href="https://wa.me/5545999795418?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20de%20Pilates." target="_blank" rel="noopener">
         <span class="hc-ic"><svg class="fl"><use href="#i-wa"/></svg></span>
         <span class="hc-tx"><b>Agendar aula experimental</b><small>Chamar no WhatsApp</small></span>
@@ -70,33 +79,21 @@
         <span class="hc-tx"><b>Como chegar</b><small>Abrir no Google Maps</small></span>
         <svg class="ln hc-ar"><use href="#i-arrow"/></svg>
       </a>
-
-      <p class="eyebrow pain-h">Veja resultados por região do corpo</p>
-      <div class="tiles pimgs">
-        <button class="pimg" type="button" data-go="res-costas" aria-label="Resultados nas costas"><img src="img/dor-costas.webp" width="520" height="455" alt="" decoding="async"></button>
-        <button class="pimg" type="button" data-go="res-pescoco" aria-label="Resultados no pescoço"><img src="img/dor-pescoco.webp" width="520" height="455" alt="" decoding="async"></button>
-        <button class="pimg" type="button" data-go="res-ombro" aria-label="Resultados no ombro"><img src="img/dor-ombro.webp" width="520" height="447" alt="" decoding="async"></button>
-        <button class="pimg" type="button" data-go="res-joelho" aria-label="Resultados no joelho"><img src="img/dor-joelho.webp" width="520" height="447" alt="" decoding="async"></button>
-      </div>
     </section>
 
 
     <!-- RESULTADOS -->
     <section class="screen" id="resultados" data-title="Resultados">
-      <h2>Resultados de quem a Bia <em>já atendeu</em></h2>
-      <p class="lead">Toque na parte do corpo que você quer conhecer e veja vídeos de pessoas que a Bia já atendeu.</p>
-      <div class="body3d nosw" id="body3d" data-estado="idle">
-        <canvas role="img" aria-label="Modelo 3D do corpo humano. Toque numa região para ver os resultados. A lista de regiões está logo abaixo."></canvas>
-        <div class="b3-tip" id="b3-tip" hidden><span class="b3-name"></span><button type="button" class="b3-open">Ver resultados<svg class="ln"><use href="#i-arrow"/></svg></button></div>
-        <div class="b3-ctl" role="group" aria-label="Lado do corpo"><button type="button" data-v="frente" class="on">Frente</button><button type="button" data-v="costas">Costas</button></div>
-        <p class="b3-hint" id="b3-hint">Arraste para girar</p>
-        <div class="b3-load"><span class="b3-spin"></span><span class="b3-msg">Carregando o corpo 3D…</span></div>
+      <h2>Veja os <em>resultados</em></h2>
+      <p class="lead">Escolha a região do corpo e veja vídeos de pessoas que a Bia já atendeu.</p>
+      <div class="tiles pimgs">
+        <button class="pimg" type="button" data-go="res-costas" aria-label="Tratamento de dores nas costas"><img src="img/res-costas.webp" width="520" height="455" alt="" decoding="async"><span class="pt">Tratamento de<br>dores nas costas</span></button>
+        <button class="pimg" type="button" data-go="res-pescoco" aria-label="Tratamento de dores no pescoço"><img src="img/res-pescoco.webp" width="520" height="455" alt="" decoding="async"><span class="pt">Tratamento de<br>dores no pescoço</span></button>
+        <button class="pimg" type="button" data-go="res-ombro" aria-label="Tratamento de dores no ombro"><img src="img/res-ombro.webp" width="520" height="447" alt="" decoding="async"><span class="pt">Tratamento de<br>dores no ombro</span></button>
+        <button class="pimg" type="button" data-go="res-joelho" aria-label="Tratamento de dores no joelho"><img src="img/res-joelho.webp" width="520" height="447" alt="" decoding="async"><span class="pt">Tratamento de<br>dores no joelho</span></button>
+        <button class="pimg" type="button" data-go="res-pernas" aria-label="Tratamento de dores nas pernas"><img src="img/res-pernas.webp" width="520" height="447" alt="" decoding="async"><span class="pt">Tratamento de<br>dores nas pernas</span></button>
+        <button class="pimg" type="button" data-go="res-bracos" aria-label="Tratamento de dores nos braços"><img src="img/res-bracos.webp" width="520" height="447" alt="" decoding="async"><span class="pt">Tratamento de<br>dores nos braços</span></button>
       </div>
-      <p class="eyebrow b3-or">ou escolha pela lista</p>
-      <button class="card link-card" data-go="res-costas"><span class="row"><svg class="ln pi"><use href="#i-costas"/></svg><span><h3>Costas</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
-      <button class="card link-card" data-go="res-pescoco"><span class="row"><svg class="ln pi"><use href="#i-pescoco"/></svg><span><h3>Pescoço</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
-      <button class="card link-card" data-go="res-ombro"><span class="row"><svg class="ln pi"><use href="#i-ombro"/></svg><span><h3>Ombro</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
-      <button class="card link-card" data-go="res-joelho"><span class="row"><svg class="ln pi"><use href="#i-joelho"/></svg><span><h3>Joelho</h3></span></span><svg class="ln"><use href="#i-arrow"/></svg></button>
     </section>
 
     <!-- RESULTADOS: COSTAS -->
@@ -129,6 +126,22 @@
       <div class="vlist" data-region="joelho" aria-live="polite"></div>
       <p class="note">Cada pessoa responde de um jeito, e os resultados variam: os vídeos mostram experiências reais, não são promessa de resultado nem substituem avaliação médica ou fisioterápica. Se sentir dor forte, persistente, formigamento, perda de força ou após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
       <div class="wa-dock"><a class="btn wide-btn" href="https://wa.me/5545999795418?text=Ol%C3%A1!%20Vi%20os%20resultados%20do%20joelho%20no%20app%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
+    </section>
+
+    <!-- RESULTADOS: PERNAS -->
+    <section class="screen dorpg" id="res-pernas" data-title="Pernas" data-region="pernas">
+      <header class="dp-head"><div class="pain-ic sm"><svg class="ln"><use href="#i-joelho"/></svg></div><div><h2>Pernas</h2><p>Escolha um vídeo e veja o resultado de pessoas que a Bia já atendeu com incômodo nesta região.</p></div></header>
+      <div class="vlist" data-regions="coxa,perna" aria-live="polite"></div>
+      <p class="note">Cada pessoa responde de um jeito, e os resultados variam: os vídeos mostram experiências reais, não são promessa de resultado nem substituem avaliação médica ou fisioterápica. Se sentir dor forte, persistente, formigamento, perda de força ou após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
+      <div class="wa-dock"><a class="btn wide-btn" href="https://wa.me/5545999795418?text=Ol%C3%A1%21%20Vi%20os%20resultados%20das%20pernas%20no%20app%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
+    </section>
+
+    <!-- RESULTADOS: BRAÇOS -->
+    <section class="screen dorpg" id="res-bracos" data-title="Braços" data-region="bracos">
+      <header class="dp-head"><div class="pain-ic sm"><svg class="ln"><use href="#i-ombro"/></svg></div><div><h2>Braços</h2><p>Escolha um vídeo e veja o resultado de pessoas que a Bia já atendeu com incômodo nesta região.</p></div></header>
+      <div class="vlist" data-regions="biceps,triceps,antebraco,cotovelo" aria-live="polite"></div>
+      <p class="note">Cada pessoa responde de um jeito, e os resultados variam: os vídeos mostram experiências reais, não são promessa de resultado nem substituem avaliação médica ou fisioterápica. Se sentir dor forte, persistente, formigamento, perda de força ou após uma queda ou lesão, procure um profissional de saúde. Na aula experimental, conte como você está, para os exercícios serem adaptados a você.</p>
+      <div class="wa-dock"><a class="btn wide-btn" href="https://wa.me/5545999795418?text=Ol%C3%A1%21%20Vi%20os%20resultados%20dos%20bra%C3%A7os%20no%20app%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener"><svg class="fl"><use href="#i-wa"/></svg>Agendar aula experimental</a></div>
     </section>
 
     <!-- RESULTADOS POR REGIÃO (corpo 3D) -->
@@ -263,6 +276,6 @@
     <button class="btn" id="do-install" hidden>Instalar agora</button>
   </section>
 </div>
-<script src="app.js?v=24"></script>
+<script src="app.js?v=26"></script>
 </body>
 </html>
