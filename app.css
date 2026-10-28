@@ -259,3 +259,9 @@ h2.sp{margin-top:1.2rem}
 #local::after{background:rgba(251,248,241,.68)}
 #local .card{background:rgba(255,255,255,.92)}
 #local p,#local h2{color:#3f453b}
+
+/* v15: fundo da Início (camada fixa cobrindo também a área do cabeçalho, sem emenda) */
+#inicio::before,#inicio::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+#inicio::before{background-image:url(img/fundo-inicio.webp);background-size:cover;background-position:42% center;background-repeat:no-repeat}
+#inicio::after{background:linear-gradient(rgba(251,248,241,.92) 0,rgba(251,248,241,.88) 110px,rgba(251,248,241,.74) 260px,rgba(251,248,241,.74))}
+#inicio .eyebrow{color:#4e6148}
