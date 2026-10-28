@@ -235,7 +235,7 @@ h2.sp{margin-top:1.2rem}
 
 
 /* v12: fundos fotográficos como camada fixa (funciona no iOS); só Aulas e Sobre */
-#aulas::before,#aulas::after,#sobre::before,#sobre::after{content:"";position:fixed;left:0;right:0;bottom:0;top:calc(var(--top) + var(--sat));z-index:-1;pointer-events:none}
+#aulas::before,#aulas::after,#sobre::before,#sobre::after,#dores::before,#dores::after{content:"";position:fixed;left:0;right:0;bottom:0;top:calc(var(--top) + var(--sat));z-index:-1;pointer-events:none}
 #aulas::before{background-image:url(img/fundo-aulas.webp);background-size:cover;background-position:center;background-repeat:no-repeat}
 #aulas::after{background:rgba(251,248,241,.82)}
 #sobre::before{background-image:url(img/fundo-sobre.webp);background-size:cover;background-position:58% center;background-repeat:no-repeat}
@@ -247,3 +247,9 @@ h2.sp{margin-top:1.2rem}
 #sobre .sobre-txt h2{margin:.1rem 0 .5rem}
 #sobre .sobre-txt p:last-child{margin-bottom:.2rem}
 #sobre p{color:#3f453b}
+
+/* v13: fundo da aba Dores (só a tela com os 4 botões) */
+#dores::before{background-image:url(img/fundo-dores.webp);background-size:cover;background-position:center;background-repeat:no-repeat}
+#dores::after{background:rgba(251,248,241,.68)}
+#dores .link-card,#dores .card{background:rgba(255,255,255,.92)}
+#dores>h2,#dores>.lead,#dores>p{color:#3f453b}
