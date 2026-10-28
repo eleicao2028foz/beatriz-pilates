@@ -235,3 +235,8 @@ h2.sp{margin-top:1.2rem}
 #aulas{background:linear-gradient(rgba(251,248,241,.84),rgba(251,248,241,.80)),url(img/fundo-aulas.webp) center/cover no-repeat,var(--beige)}
 #aulas .card,#aulas .steps li{background:rgba(255,255,255,.93)}
 #aulas .note{color:#4f554a}
+
+/* v11: foto de fundo só na aba Sobre (presa à tela, não rola) */
+#sobre{background:linear-gradient(rgba(251,248,241,.86),rgba(251,248,241,.82)),url(img/fundo-sobre.webp) 58% center/cover no-repeat,var(--beige)}
+#sobre .card{background:rgba(255,255,255,.93)}
+#sobre p{color:#3f453b}
