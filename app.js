@@ -166,7 +166,7 @@ function iniciar3d(){
   body3d.dataset.estado='loading';
   C3p=(async()=>{
     try{
-      const [mod,dados]=await Promise.all([import('./js/corpo3d.js?v=26'),regioes()]);
+      const [mod,dados]=await Promise.all([import('./js/corpo3d.js?v=27'),regioes()]);
       C3=await mod.iniciar(body3d,{modelo:dados.modelo||'modelo/corpo.glb',dados,debug:/[?&]dbg3d/.test(location.search),
         aoAbrir:abrirRegiao, aoSobre:(reg,persist)=>mostrarTip(reg,persist), aoMudar:({vista})=>vistaBtns(vista)});
       body3d.dataset.estado='ok'; window.__corpo3d=C3;
