@@ -1,0 +1,25 @@
+{
+  "_como_editar": "Cada item de 'casos' vira uma ficha na aba Resultados. 'regiao' deve ser: costas, pescoco, ombro, joelho, pernas ou bracos. 'exemplo': true mostra a etiqueta 'Exemplo' (tire quando for um caso real, com autorização por escrito da pessoa). 'dorAntes'/'dorDepois' de 0 a 100 (deixe dorDepois null para esconder). Em cada exercício, 'foto' pode ficar vazia (aparece 'Foto em breve').",
+  "casos": [
+    {
+      "id": "exemplo-lombar",
+      "exemplo": true,
+      "nome": "",
+      "idade": 68,
+      "queixa": "Dor nas costas (lombar)",
+      "diagnostico": "(exemplo)",
+      "regiao": "costas",
+      "regiaoNome": "Lombar",
+      "boneco": "img/casos/boneco-lombar.webp",
+      "dorAntes": 70,
+      "dorDepois": 20,
+      "foto": "img/casos/exemplo-lombar.webp",
+      "fotoAlt": "Aluno sentado no Cadillac fazendo exercício com as alças (foto de exemplo)",
+      "exercicios": [
+        { "foto": "img/casos/exemplo-lombar.webp", "titulo": "Remada sentado no Cadillac", "legenda": "Sentado, coluna alongada, puxa as alças em direção ao corpo com controle. Trabalha a postura e a musculatura das costas. (legenda de exemplo)", "vezesPorSemana": 2 },
+        { "foto": "", "titulo": "Exercício 2", "legenda": "Legenda de exemplo: o que o exercício faz e como é feito.", "vezesPorSemana": 2 },
+        { "foto": "", "titulo": "Exercício 3", "legenda": "Legenda de exemplo: o que o exercício faz e como é feito.", "vezesPorSemana": 3 }
+      ]
+    }
+  ]
+}

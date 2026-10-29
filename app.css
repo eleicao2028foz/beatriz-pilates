@@ -324,3 +324,53 @@ a.map-ph span{font-family:var(--serif);font-size:1.1rem;letter-spacing:.02em;bac
   outline:1px solid rgba(196,164,104,.6);outline-offset:-6px;
   box-shadow:0 16px 28px -10px rgba(78,97,72,.36),0 3px 8px rgba(78,97,72,.12),
     inset 0 1.5px 0 rgba(255,255,255,.95),inset 0 -10px 18px -12px rgba(120,100,60,.22),inset 0 0 22px rgba(255,255,255,.55)}
+
+/* v28 — fichas de caso (Resultados): dados em data/casos.json */
+.casos{display:grid;gap:22px;margin:6px 0 16px}
+.caso{display:grid;gap:16px}
+.cs-bloco{background:rgba(255,253,249,.9);border:1px solid var(--sand);border-radius:22px;padding:16px 14px 16px;box-shadow:0 10px 24px -14px rgba(78,97,72,.3)}
+.cs-h{display:flex;align-items:center;gap:10px;margin:0 2px 12px;padding-bottom:9px;border-bottom:1px solid rgba(196,164,104,.45)}
+.cs-h h3{font-size:1.65rem;font-weight:300;letter-spacing:.01em}
+.cs-tag{margin-left:auto;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#8A6A2E;background:#F7EEDB;border:1px solid #E6D3A8;border-radius:99px;padding:2px 10px 1px}
+.cs-top{display:grid;grid-template-columns:1fr 46%;gap:12px;align-items:stretch}
+.cs-dados{margin:0;display:flex;flex-direction:column;justify-content:center}
+.cs-dados dt{font-size:.64rem;letter-spacing:.17em;text-transform:uppercase;color:var(--sage);margin-top:10px}
+.cs-dados dt:first-child{margin-top:0}
+.cs-dados dd{margin:1px 0 0;font-family:var(--serif);font-size:1.22rem;line-height:1.2;color:var(--text)}
+.cs-foto{margin:0;border-radius:16px;overflow:hidden;background:var(--sage-xl);aspect-ratio:3/4;box-shadow:0 6px 16px -8px rgba(62,57,52,.35)}
+.cs-foto img,.cs-foto .foto-vazia{width:100%;height:100%;object-fit:cover;object-position:28% 40%;display:block}
+.cs-mid{display:grid;grid-template-columns:96px 1fr;gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid var(--sage-l);align-items:end}
+.cs-boneco{margin:0;text-align:center}
+.cs-boneco img{width:96px;height:auto;display:block;filter:drop-shadow(0 4px 6px rgba(62,57,52,.18))}
+.cs-boneco figcaption{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#B3473C;margin-top:4px}
+.cs-meds{text-align:center}
+.cs-mt{margin:0 0 8px;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--sage)}
+.cs-medrow{display:flex;justify-content:center;gap:16px}
+.cs-mini{margin:6px 0 0;font-size:.7rem;color:var(--gray);font-style:italic}
+.dor-med{display:flex;flex-direction:column;align-items:center;gap:4px}
+.dm-num{font-family:var(--serif);font-size:1.9rem;line-height:1;color:var(--text)}
+.dor-med.antes .dm-num{color:#B3473C}.dor-med.depois .dm-num{color:var(--sage-d)}
+.dm-col{display:flex;gap:5px;align-items:stretch}
+.dm-esc{display:flex;flex-direction:column;justify-content:space-between;font-size:.58rem;color:var(--gray);line-height:1;padding:1px 0}
+.dm-bars{display:flex;flex-direction:column;gap:3px;width:34px;padding:4px;border:1px solid var(--sand);border-radius:10px;background:#fff}
+.dm-bars i{display:block;height:6px;border-radius:3px;background:#ECE6DB}
+.dor-med.antes .dm-bars i.on{background:color-mix(in srgb,#C9483C calc(var(--t)*100%),#D9B26A)}
+.dor-med.depois .dm-bars i.on{background:color-mix(in srgb,var(--sage-d) calc(var(--t)*100%),#A9BA9F)}
+.dm-lab{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+.cs-ex{margin:0 0 16px;display:grid;gap:10px}
+.cs-ex:last-child{margin-bottom:0}
+.cs-exfoto{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 40%;border-radius:16px;display:block;background:var(--sage-xl)}
+.foto-vazia{display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:linear-gradient(145deg,var(--sage-xl),var(--beige))!important;border:1px dashed var(--sand);color:var(--sage);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase}
+.foto-vazia svg{width:34px;height:34px;stroke-width:1.1}
+.cs-ex figcaption p{margin:4px 0 8px;font-size:.92rem;line-height:1.5;color:var(--text)}
+.cs-ext{display:flex;align-items:center;gap:9px}
+.cs-ext strong{font-family:var(--serif);font-weight:400;font-size:1.25rem;color:var(--sage-d)}
+.cs-exn{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.75rem;color:#fff;background:var(--sage);flex:none}
+.cs-freq{display:inline-block;font-size:.72rem;letter-spacing:.08em;color:var(--sage-d);background:var(--sage-l);border-radius:99px;padding:3px 12px 2px}
+.caso-breve{text-align:center;padding:26px 18px 22px;background:rgba(255,253,249,.85);border:1px solid var(--sand);border-radius:22px}
+.caso-breve h3{font-size:1.6rem;margin-bottom:6px}
+.caso-breve p{margin:0;font-size:.9rem;color:var(--gray)}
+.cs-mid{grid-template-columns:128px 1fr;align-items:center}
+.cs-boneco img{width:128px;margin:0 auto}
+.dm-bars i{height:5px}
+.cs-exfoto.foto-vazia{aspect-ratio:16/9}

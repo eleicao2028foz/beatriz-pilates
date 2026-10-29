@@ -135,6 +135,68 @@ async function loadVideos(){
 }
 videosPronto=loadVideos();
 
+// ---- v28: fichas de caso (aba Resultados) — dados em data/casos.json ----
+function medidor(valor,rotulo,cls){
+  const v=Math.max(0,Math.min(100,Math.round(Number(valor)||0)));
+  const w=el('div','dor-med '+(cls||'')); w.setAttribute('role','img'); w.setAttribute('aria-label',rotulo+': dor '+v+' de 100');
+  w.appendChild(el('span','dm-num',String(v)));
+  const bars=el('div','dm-bars'); const N=20;
+  for(let i=N;i>=1;i--){ const b=el('i'); const on=i*5<=v||(i===1&&v>0); if(on){ b.className='on'; b.style.setProperty('--t',((i-1)/(N-1)).toFixed(3)); } bars.appendChild(b); }
+  const esc=el('div','dm-esc'); ['100','50','0'].forEach(t=>esc.appendChild(el('span',null,t)));
+  const col=el('div','dm-col'); col.appendChild(esc); col.appendChild(bars); w.appendChild(col);
+  w.appendChild(el('span','dm-lab',rotulo)); return w;
+}
+function fotoOuVazio(src,alt,cls){
+  if(src){ const im=el('img',cls); im.src=src; im.alt=alt||''; im.loading='lazy'; im.decoding='async'; return im; }
+  const d=el('div',(cls||'')+' foto-vazia'); d.appendChild(svgUse('i-aulas','ln')); d.appendChild(el('span',null,'Foto em breve')); return d;
+}
+function fichaCaso(c){
+  const art=el('article','caso'); const ex=!!c.exemplo; const exs=t=>ex?t+' (exemplo)':t;
+  // Avaliação
+  const av=el('section','cs-bloco cs-av');
+  const h=el('header','cs-h'); h.appendChild(el('h3',null,'Avaliação')); if(ex) h.appendChild(el('span','cs-tag','Exemplo')); av.appendChild(h);
+  const top=el('div','cs-top');
+  const dl=el('dl','cs-dados');
+  if(c.nome){ dl.appendChild(el('dt',null,'Aluno(a)')); dl.appendChild(el('dd',null,c.nome)); }
+  dl.appendChild(el('dt',null,'Idade')); dl.appendChild(el('dd',null,c.idade!=null&&c.idade!==''?exs(c.idade+' anos'):'—'));
+  dl.appendChild(el('dt',null,'Queixa')); dl.appendChild(el('dd',null,c.queixa||'—'));
+  dl.appendChild(el('dt',null,'Diagnóstico')); dl.appendChild(el('dd',null,c.diagnostico||'—'));
+  top.appendChild(dl);
+  const fw=el('figure','cs-foto'); fw.appendChild(fotoOuVazio(c.foto,c.fotoAlt)); top.appendChild(fw);
+  av.appendChild(top);
+  const mid=el('div','cs-mid');
+  const bn=el('figure','cs-boneco');
+  if(c.boneco){ const bi=el('img'); bi.src=c.boneco; bi.alt='Boneco com a região '+(c.regiaoNome||'da dor')+' marcada em vermelho'; bi.loading='lazy'; bn.appendChild(bi); }
+  bn.appendChild(el('figcaption',null,c.regiaoNome||'')); mid.appendChild(bn);
+  const meds=el('div','cs-meds'); meds.appendChild(el('p','cs-mt','Nível de dor · 0 a 100'));
+  const row=el('div','cs-medrow'); row.appendChild(medidor(c.dorAntes,'Antes','antes'));
+  if(c.dorDepois!=null&&c.dorDepois!=='') row.appendChild(medidor(c.dorDepois,'Depois','depois'));
+  meds.appendChild(row); if(ex) meds.appendChild(el('p','cs-mini','Valores de exemplo.')); mid.appendChild(meds);
+  av.appendChild(mid); art.appendChild(av);
+  // Tratamento
+  const tr=el('section','cs-bloco cs-tr');
+  const h2=el('header','cs-h'); h2.appendChild(el('h3',null,'Tratamento')); if(ex) h2.appendChild(el('span','cs-tag','Exemplo')); tr.appendChild(h2);
+  (c.exercicios||[]).forEach((e,i)=>{
+    const f=el('figure','cs-ex'); f.appendChild(fotoOuVazio(e.foto,e.titulo,'cs-exfoto'));
+    const cap=el('figcaption'); const t=el('div','cs-ext'); t.appendChild(el('span','cs-exn',String(i+1))); t.appendChild(el('strong',null,e.titulo||('Exercício '+(i+1)))); cap.appendChild(t);
+    if(e.legenda) cap.appendChild(el('p',null,e.legenda));
+    if(e.vezesPorSemana) cap.appendChild(el('span','cs-freq',e.vezesPorSemana+(Number(e.vezesPorSemana)===1?' vez':' vezes')+' por semana'));
+    f.appendChild(cap); tr.appendChild(f);
+  });
+  art.appendChild(tr); return art;
+}
+async function loadCasos(){
+  let d={}; try{ const r=await fetch('data/casos.json',{cache:'no-cache'}); d=await r.json(); }catch(e){}
+  const all=Array.isArray(d.casos)?d.casos:[];
+  $$('.casos[data-region]').forEach(box=>{
+    const reg=box.dataset.region; box.textContent=''; const its=all.filter(c=>c.regiao===reg);
+    if(!its.length){ const s=el('div','caso-breve'); const ic=el('div','pain-ic'); ic.appendChild(svgUse(ICON[reg]||'i-aulas','ln')); s.appendChild(ic);
+      s.appendChild(el('h3',null,'Caso em breve')); s.appendChild(el('p',null,'Aqui vai aparecer a ficha de um caso desta região: a avaliação e os exercícios do tratamento, com autorização da pessoa.')); box.appendChild(s); return; }
+    its.forEach(c=>box.appendChild(fichaCaso(c)));
+  });
+}
+loadCasos();
+
 
 // ---- corpo 3D interativo (Início): carrega só quando a aba abre ----
 let REGDATA=null,regPromise=null;
@@ -166,7 +228,7 @@ function iniciar3d(){
   body3d.dataset.estado='loading';
   C3p=(async()=>{
     try{
-      const [mod,dados]=await Promise.all([import('./js/corpo3d.js?v=27'),regioes()]);
+      const [mod,dados]=await Promise.all([import('./js/corpo3d.js?v=28'),regioes()]);
       C3=await mod.iniciar(body3d,{modelo:dados.modelo||'modelo/corpo.glb',dados,debug:/[?&]dbg3d/.test(location.search),
         aoAbrir:abrirRegiao, aoSobre:(reg,persist)=>mostrarTip(reg,persist), aoMudar:({vista})=>vistaBtns(vista)});
       body3d.dataset.estado='ok'; window.__corpo3d=C3;
