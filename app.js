@@ -207,7 +207,7 @@ async function fillRegiao(key){
   sec.dataset.title=rg.nome; if(cur==='regiao-'+key) title.textContent=rg.nome;
   $('#rg-h').textContent=rg.nome; $('#rg-ic').setAttribute('href','#'+(rg.icone||'i-costas'));
   const items=(rg.videos||[]).map(id=>VIDEOS.find(v=>v.id===id)).filter(Boolean);
-  $('#rg-p').textContent=items.length>1?'Escolha um vídeo e veja o resultado de pessoas que a Bia já atendeu com incômodo nesta região.':'Um vídeo de uma pessoa que a Bia já atendeu, mostrando o resultado nesta região.';
+  $('#rg-p').textContent=items.length>1?'Escolha um vídeo e veja o resultado de pessoas que a Beatriz já atendeu com incômodo nesta região.':'Um vídeo de uma pessoa que a Beatriz já atendeu, mostrando o resultado nesta região.';
   const l=$('#rg-list'); stopVideos(); l.textContent='';
   if(!items.length) l.appendChild(el('p','note','Os vídeos desta região aparecem aqui.'));
   items.forEach((it,i)=>l.appendChild(card(it,items.length>1?i+1:0)));
@@ -228,7 +228,7 @@ function iniciar3d(){
   body3d.dataset.estado='loading';
   C3p=(async()=>{
     try{
-      const [mod,dados]=await Promise.all([import('./js/corpo3d.js?v=29'),regioes()]);
+      const [mod,dados]=await Promise.all([import('./js/corpo3d.js?v=30'),regioes()]);
       C3=await mod.iniciar(body3d,{modelo:dados.modelo||'modelo/corpo.glb',dados,debug:/[?&]dbg3d/.test(location.search),
         aoAbrir:abrirRegiao, aoSobre:(reg,persist)=>mostrarTip(reg,persist), aoMudar:({vista})=>vistaBtns(vista)});
       body3d.dataset.estado='ok'; window.__corpo3d=C3;
