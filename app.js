@@ -228,12 +228,12 @@ function iniciar3d(){
   body3d.dataset.estado='loading';
   C3p=(async()=>{
     try{
-      const [mod,dados]=await Promise.all([import('./js/corpo3d.js?v=28'),regioes()]);
+      const [mod,dados]=await Promise.all([import('./js/corpo3d.js?v=29'),regioes()]);
       C3=await mod.iniciar(body3d,{modelo:dados.modelo||'modelo/corpo.glb',dados,debug:/[?&]dbg3d/.test(location.search),
         aoAbrir:abrirRegiao, aoSobre:(reg,persist)=>mostrarTip(reg,persist), aoMudar:({vista})=>vistaBtns(vista)});
       body3d.dataset.estado='ok'; window.__corpo3d=C3;
     }catch(e){
-      body3d.dataset.estado='erro'; body3d.querySelector('.b3-msg').textContent='Não foi possível mostrar o corpo 3D neste aparelho. Veja as regiões na aba Resultados.'; console.warn('corpo3d',e);
+      body3d.dataset.estado='erro'; body3d.querySelector('.b3-msg').textContent='Não foi possível mostrar o corpo 3D neste aparelho. Veja as regiões na aba Depoimentos.'; console.warn('corpo3d',e);
     }
   })();
 }

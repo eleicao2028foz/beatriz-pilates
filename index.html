@@ -17,7 +17,7 @@
 <link rel="preload" href="fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="img/cabecalho-logo.webp" as="image" type="image/webp">
-<link rel="stylesheet" href="app.css?v=28">
+<link rel="stylesheet" href="app.css?v=29">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -61,11 +61,11 @@
 
       <h2 class="home-cap" id="home-cap">Clique onde <em>dói</em> em você</h2>
       <div class="body3d nosw" id="body3d" data-estado="idle">
-        <canvas role="img" aria-label="Modelo 3D do corpo humano. Toque numa região para ver os vídeos de resultados. As mesmas regiões estão na aba Resultados."></canvas>
+        <canvas role="img" aria-label="Modelo 3D do corpo humano. Toque numa região para ver os vídeos de resultados. As mesmas regiões estão na aba Depoimentos."></canvas>
         <div class="b3-tip" id="b3-tip" hidden><span class="b3-name"></span><button type="button" class="b3-open">Ver vídeos<svg class="ln"><use href="#i-arrow"/></svg></button></div>
         <div class="b3-ctl" role="group" aria-label="Lado do corpo"><button type="button" data-v="frente" class="on">Frente</button><button type="button" data-v="costas">Costas</button></div>
         <p class="b3-hint" id="b3-hint">Arraste para girar</p>
-        <div class="b3-load"><span class="b3-spin"></span><span class="b3-msg">Carregando o corpo 3D…</span><button type="button" class="b3-alt" data-go="resultados">Ver a aba Resultados</button></div>
+        <div class="b3-load"><span class="b3-spin"></span><span class="b3-msg">Carregando o corpo 3D…</span><button type="button" class="b3-alt" data-go="resultados">Ver a aba Depoimentos</button></div>
       </div>
 
       <a class="hero-card" href="https://wa.me/5545999795418?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20de%20Pilates." target="_blank" rel="noopener">
@@ -83,8 +83,8 @@
 
 
     <!-- RESULTADOS -->
-    <section class="screen" id="resultados" data-title="Resultados">
-      <h2>Veja os <em>resultados</em></h2>
+    <section class="screen" id="resultados" data-title="Depoimentos">
+      <h2>Veja os <em>depoimentos</em></h2>
       <p class="lead">Escolha a região do corpo e veja vídeos de pessoas que a Bia já atendeu.</p>
       <div class="tiles pimgs">
         <button class="pimg" type="button" data-go="res-costas" aria-label="Tratamento de dores nas costas"><img src="img/res-costas.webp" width="520" height="455" alt="" decoding="async"><span class="pt">Tratamento de<br>dores nas costas</span></button>
@@ -250,7 +250,7 @@
 
   <nav class="tabbar" id="tabbar" aria-label="Navegação">
     <button data-go="inicio" class="on"><svg class="ln"><use href="#i-home"/></svg><span>Início</span></button>
-    <button data-go="resultados"><svg class="ln"><use href="#i-resultados"/></svg><span>Resultados</span></button>
+    <button data-go="resultados"><svg class="ln"><use href="#i-resultados"/></svg><span>Depoimentos</span></button>
     <button data-go="aulas"><svg class="ln"><use href="#i-aulas"/></svg><span>Aulas</span></button>
     <button data-go="sobre"><svg class="ln"><use href="#i-user"/></svg><span>Sobre</span></button>
     <button data-go="local"><svg class="ln"><use href="#i-pin"/></svg><span>Local</span></button>
@@ -276,6 +276,6 @@
     <button class="btn" id="do-install" hidden>Instalar agora</button>
   </section>
 </div>
-<script src="app.js?v=28"></script>
+<script src="app.js?v=29"></script>
 </body>
 </html>
