@@ -1,7 +1,7 @@
 {
-  "name": "Studio Beatriz Santos",
-  "short_name": "Studio Bia",
-  "description": "Studio de Pilates Beatriz Santos · Santa Terezinha de Itaipu - PR",
+  "name": "Estúdio Beatriz Santos",
+  "short_name": "Estúdio Bia",
+  "description": "Estúdio de Pilates Beatriz Santos · Santa Terezinha de Itaipu - PR",
   "lang": "pt-BR",
   "dir": "ltr",
   "start_url": "./index.html?source=pwa",
